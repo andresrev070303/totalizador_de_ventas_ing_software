@@ -10,7 +10,11 @@ function calcularImpuestoPorEstado(neto, estado){
     return neto * 8.25 / 100;
   }else if (estado == "AL") {
     return neto * 4.00 / 100; 
-  }else {
+
+  }else if (estado == "TX") {
+    return neto * 6.25 / 100;
+  }
+  else {
     return 0;
   }
 }
