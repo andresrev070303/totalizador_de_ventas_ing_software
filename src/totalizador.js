@@ -16,6 +16,8 @@ function calcularImpuestoPorEstado(neto, estado){
   }
   else if (estado == "NV") {
     return neto * 8.00 / 100;
+  }else if (estado == "UT") {
+    return neto * 6.65 / 100;
   }
   else {
     return 0;

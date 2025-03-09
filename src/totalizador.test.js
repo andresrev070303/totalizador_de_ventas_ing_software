@@ -31,5 +31,9 @@ import totalizar from "./totalizador.js";
   it("deberia calcular el precio neto de precio 100 y unidades 500 con el impuesto de NV", () => {
     expect(totalizar(100, 500, "NV")).toEqual(54000);
   });
+  it("deberia calcular el precio neto de precio 100 y unidades 500 con el impuesto de UT", () => {
+    expect(totalizar(100, 500, "UT")).toEqual(53325);
+  });
+
 
  });
