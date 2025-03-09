@@ -1,7 +1,16 @@
-function totalizar(precio, cantidad) {
+function totalizar(precio, cantidad, estado) {
   var neto = precio * cantidad;
+  var impuesto = calcularImpuestoPorEstado(neto, estado);
   var descuento = calcularDescuentoPorPrecioNeto(neto);
-return neto - descuento;
+return neto - descuento + impuesto;
+}
+function calcularImpuestoPorEstado(neto, estado){
+ 
+  if (estado == "CA") {
+    return neto * 8.25 / 100;
+  } else {
+    return 0;
+  }
 }
 function calcularDescuentoPorPrecioNeto(neto){
   if (neto == 1000) {
