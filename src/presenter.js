@@ -1,6 +1,7 @@
 import totalizar from "./totalizador.js";
 import calcularPrecioNeto from "./calcularPrecioNeto.js";
 import calcularImpuestoPorEstado from "./calcularImpuestoPorEstado.js";
+import calcularDescuentoPorPrecioNeto from "./calcularDescuentoPorPrecioNeto.js";
  
 const inputPrecio = document.querySelector("#precio");
 const inputCantidad = document.querySelector("#cantidad");
@@ -19,10 +20,12 @@ form.addEventListener("submit", (event) => {
   const estado = inputEstado.value;
 
   const neto = calcularPrecioNeto(precio, cantidad);
+  const descuento =  calcularDescuentoPorPrecioNeto (neto);
   const impuesto = calcularImpuestoPorEstado(neto, estado);
   const total = totalizar(precio, cantidad, estado);
    
   divPrecioNeto.innerHTML = "<p> Precio Neto: " + neto + "</p>";
+  divDescuento.innerHTML = "<p> Descuento: " + descuento + "</p>";
   divImpuesto.innerHTML = "<p> Impuesto: " + impuesto + "</p>";
   divPrecioTotal.innerHTML = "<p> Precio Total: " + total + "</p>";
  });
