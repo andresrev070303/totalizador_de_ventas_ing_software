@@ -49,4 +49,7 @@ describe("calcular", () => {
   it("deberia calcular el precio neto con impuesto de muebles que es 3%", () => {
     expect(totalizar(10, 200, "", "Muebles" )).toEqual(2060);
   });
+  it("deberia calcular el precio neto con descuento y impuesto de electronicos que es 1% y 4%", () => {
+    expect(totalizar(10, 200, "", "Electronicos" )).toEqual(2060);
+  });
  });
