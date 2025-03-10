@@ -1,14 +1,18 @@
 function totalizar(precio, cantidad) {
   var neto = precio * cantidad;
-  neto = calcularDescuentoPorCantidad(neto, cantidad);
-  return neto;
+  var descuento = calcularDescuentoPorPrecioNeto(neto);
+return neto - descuento;
 }
-function calcularDescuentoPorCantidad(neto,cantidad){
-  if (cantidad == 1000) {
-    return neto - neto * 3.00 / 100;
-  }  
+function calcularDescuentoPorPrecioNeto(neto){
+  if (neto == 1000) {
+    return neto * 3.00 / 100;
+  }
+  else if(neto == 3000){
+    return neto * 5.00 / 100;
+  }
   else {
-    return neto;
+    return 0;
   }
 }
+
 export default totalizar;
