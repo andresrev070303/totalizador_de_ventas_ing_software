@@ -37,5 +37,8 @@ describe("calcular", () => {
   it("deberia calcular el precio neto con descuento y impuesto de varios que es 0%", () => {
     expect(totalizar(10, 200, "", "Varios" )).toEqual(2000);
   });
+  it("deberia calcular el precio neto con descuento y impuesto de alimentos que es 2%", () => {
+    expect(totalizar(10, 200, "", "Alimentos" )).toEqual(1960);
+  });
 
  });
