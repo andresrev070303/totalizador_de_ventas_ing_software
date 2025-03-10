@@ -9,6 +9,9 @@ function calcularImpuestoDescuentoCategoria(neto, categoria){
     } else if (categoria == "Bebidas alcoholicas"){
         impuesto = neto * 7.00 / 100;
         return impuesto - descuento;
+    } else if (categoria == "Material de escritorio"){
+        descuento = neto * 1.50 / 100;
+        return impuesto - descuento;
     }
     else {
         return 0;
