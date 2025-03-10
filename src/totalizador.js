@@ -8,7 +8,9 @@ function calcularImpuestoPorEstado(neto, estado){
  
   if (estado == "CA") {
     return neto * 8.25 / 100;
-  } else {
+  }else if (estado == "AL") {
+    return neto * 4.00 / 100; 
+  }else {
     return 0;
   }
 }
