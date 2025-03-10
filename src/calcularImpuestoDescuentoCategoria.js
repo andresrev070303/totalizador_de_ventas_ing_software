@@ -2,9 +2,12 @@ function calcularImpuestoDescuentoCategoria(neto, categoria){
     var impuesto = 0;
      var descuento = 0;
     if (categoria == "Varios"){
-        return 0;
+        return impuesto - descuento;
     } else if (categoria == "Alimentos"){
         descuento = neto * 2.00 / 100;
+        return impuesto - descuento;
+    } else if (categoria == "Bebidas alcoholicas"){
+        impuesto = neto * 7.00 / 100;
         return impuesto - descuento;
     }
     else {
