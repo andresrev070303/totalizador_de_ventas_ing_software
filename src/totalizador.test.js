@@ -25,8 +25,11 @@ import totalizar from "./totalizador.js";
   it("deberia calcular el precio neto de precio 100 y unidades 500 con el impuesto de AL", () => {
     expect(totalizar(100, 500, "AL")).toEqual(52000);
   });
-  it("deberia calcular el precio neto de precio 100 y unidades 500 con el impuesto de AL", () => {
+  it("deberia calcular el precio neto de precio 100 y unidades 500 con el impuesto de TX", () => {
     expect(totalizar(100, 500, "TX")).toEqual(53125);
+  });
+  it("deberia calcular el precio neto de precio 100 y unidades 500 con el impuesto de NV", () => {
+    expect(totalizar(100, 500, "NV")).toEqual(54000);
   });
 
  });
