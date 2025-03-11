@@ -24,30 +24,34 @@ import totalizar from "./totalizador";
  const divPrecioTotal = document.querySelector("#resultado-div");
  
  form.addEventListener("submit", (event) => {
-   event.preventDefault();
- 
-   const precio = Number.parseInt(inputPrecio.value);
-   const cantidad = Number.parseInt(inputCantidad.value);
-   const estado = inputEstado.value;
-   const categoria = inputCategoria.value;
-   const peso = Number.parseInt(inputPeso.value);
-   const cliente = inputCliente.value;
- 
-   const neto = calcularPrecioNeto(precio, cantidad);
-   const descuento = calcularDescuentoPrecioNeto(neto);
-   const impuesto = calcularImpuestoPorEstado(neto, estado);
-   const impuestoDescuentoCategoria = calcularImpuestoDescuentoCategoria(neto, categoria);
-   const envio = calcularCostoEnvio(peso);
-   const descuentoEnvio = calcularDescuentoEnvio(envio, cliente);
-   const descuentoEspecial = calcularDescuentoEspecial(neto, categoria, cliente);
-   const total = totalizar(precio, cantidad, estado, categoria, peso, cliente);
- 
-   divPrecioNeto.innerHTML = "<p> Precio Neto: " + neto + "</p>";
-   divDescuento.innerHTML = "<p> Descuento: " + descuento + "</p>";
-   divImpuesto.innerHTML = "<p> Impuesto: " + impuesto + "</p>";
-   divImpuestoDescuentoCategoria.innerHTML = "<p> Impuesto o Descuento por Categoria: " + impuestoDescuentoCategoria + "</p>";
-   divCostoEnvio.innerHTML = "<p> Costo de Envio: " + envio + "</p>";
-   divDescuentoEnvio.innerHTML = "<p> Descuento de Envio: " + descuentoEnvio + "</p>";
-   divDescuentoEspecial.innerHTML = "<p> Descuento Especial: " + descuentoEspecial + "</p>";
-   divPrecioTotal.innerHTML = "<p> Precio Total: " + total + "</p>";
- });
+  event.preventDefault();
+
+  const precio = Number.parseFloat(inputPrecio.value);
+  const cantidad = Number.parseInt(inputCantidad.value);
+  const estado = inputEstado.value;
+  const categoria = inputCategoria.value;
+  const peso = Number.parseFloat(inputPeso.value);
+  const cliente = inputCliente.value;
+
+  const neto = calcularPrecioNeto(precio, cantidad);
+  const descuento = calcularDescuentoPrecioNeto(neto);
+  const impuesto = calcularImpuestoPorEstado(neto, estado);
+  const impuestoDescuentoCategoria = calcularImpuestoDescuentoCategoria(neto, categoria);
+  const envio = calcularCostoEnvio(peso);
+  const descuentoEnvio = calcularDescuentoEnvio(envio, cliente);
+  const descuentoEspecial = calcularDescuentoEspecial(neto, categoria, cliente);
+  const total = totalizar(precio, cantidad, estado, categoria, peso, cliente);
+
+  // Calcular el porcentaje de descuento
+  const porcentajeDescuento = (descuento / neto) * 100 || 0;
+  
+  // Mostrar resultados en el formato deseado
+  divPrecioNeto.innerHTML = `<p>Precio neto (${cantidad} * $${precio}): $${neto.toFixed(2)}</p>`;
+  divDescuento.innerHTML = `<p>Descuento (${porcentajeDescuento.toFixed(2)}%): $${descuento.toFixed(2)}</p>`;
+  divImpuesto.innerHTML = `<p>Impuesto para ${estado} (${(impuesto / neto * 100).toFixed(2)}%): $${impuesto.toFixed(2)}</p>`;
+  divImpuestoDescuentoCategoria.innerHTML = `<p>Impuesto o Descuento por Categoría: $${impuestoDescuentoCategoria.toFixed(2)}</p>`;
+  divCostoEnvio.innerHTML = `<p>Costo de Envío: $${envio.toFixed(2)}</p>`;
+  divDescuentoEnvio.innerHTML = `<p>Descuento de Envío: $${descuentoEnvio.toFixed(2)}</p>`;
+  divDescuentoEspecial.innerHTML = `<p>Descuento Especial: $${descuentoEspecial.toFixed(2)}</p>`;
+  divPrecioTotal.innerHTML = `<p><strong>Precio total (descuento e impuesto): $${total.toFixed(2)}</strong></p>`;
+});
