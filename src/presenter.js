@@ -32,6 +32,11 @@ import totalizar from "./totalizador";
   const categoria = inputCategoria.value;
   const peso = Number.parseFloat(inputPeso.value);
   const cliente = inputCliente.value;
+  if (precio <= 0 || cantidad <= 0 || peso <= 0) {
+    alert("Los valores de precio, cantidad y peso deben ser mayores a 0");
+    return;
+  }
+  else{
 
   const neto = calcularPrecioNeto(precio, cantidad);
   const descuento = calcularDescuentoPrecioNeto(neto);
@@ -54,4 +59,5 @@ import totalizar from "./totalizador";
   divDescuentoEnvio.innerHTML = `<p>Descuento de Envío: $${descuentoEnvio.toFixed(2)}</p>`;
   divDescuentoEspecial.innerHTML = `<p>Descuento Especial: $${descuentoEspecial.toFixed(2)}</p>`;
   divPrecioTotal.innerHTML = `<p><strong>Precio total (descuento e impuesto): $${total.toFixed(2)}</strong></p>`;
+  }
 });
